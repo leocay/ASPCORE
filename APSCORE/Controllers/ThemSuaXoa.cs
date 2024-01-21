@@ -1,5 +1,6 @@
 ﻿using APSCORE.Entities;
 using APSCORE.Service;
+using APSCORE.Service.EditBook.Interface;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using static APSCORE.Service.MySqlService;
@@ -10,18 +11,36 @@ namespace APSCORE.Controllers
     [Route("api/")]
     public class ThemSuaXoa : Controller
     {
-        private readonly LibraryContext dbContext;
-        private readonly FindAllBook findfind;
-        public ThemSuaXoa() { 
-            this.findfind = new FindAllBook(this.dbContext);
+        private readonly IEditBook editBook;
+
+        public ThemSuaXoa(IEditBook editBook) { 
+            this.editBook = editBook;
         }
 
         [HttpGet("get-book")]
-        public List<Book> all(int NuId)
+        public List<Book> all()
         {
-            return findfind.FindAll(0);
+            return editBook.FindAll();
 
         }
 
+        //[HttpGet("add-book")]
+        //public void add()
+        //{
+        //    findfind.addBook();
+        //}
+
+        //[HttpGet("del-book")]
+        //public void del()
+        //{
+        //    findfind.delete();
+        //}
+
+
+        //[HttpGet("edit-book")]
+        //public void edit()
+        //{
+        //    findfind.edit();
+        //}
     }
 }

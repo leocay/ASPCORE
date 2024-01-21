@@ -25,8 +25,35 @@ namespace APSCORE.Service
                 List<Book> model = dbContext.Book.ToList();
                 return model;
             }
+        }
 
+        public void addBook()
+        {
+            dbContext.Add(new Book
+            {
+                ISBN = "978-1547247762",
+                Title = "co len linh",
+                Author = "mrlk",
+                Language = "vn",
+                Pages = 111,
 
+            });
+            dbContext.SaveChanges();
+        }
+
+        public void delete()
+        {
+            var item = dbContext.Book.Where(x => x.Language == "vn").FirstOrDefault();
+            dbContext.Book.Remove(item);
+
+            dbContext.SaveChanges();
+        }
+        public void edit()
+        {
+            var item = dbContext.Book.Where(x => x.Pages == 416).FirstOrDefault();
+            item.Pages = 555;
+
+            dbContext.SaveChanges();
         }
     }
 }

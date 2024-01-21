@@ -6,7 +6,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        InsertData();
+        //InsertData();
 
         var builder = WebApplication.CreateBuilder(args);
 
