@@ -8,7 +8,9 @@ namespace APSCORE.Service
     {
         public class LibraryContext : DbContext
         {
+            //Tao Bang
             public DbSet<Book> Book { get; set; }
+            public DbSet<TacGia> TacGia { get; set; }
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
@@ -21,9 +23,17 @@ namespace APSCORE.Service
 
                 modelBuilder.Entity<Book>(entity =>
                 {
+                    //tao khoa chinh
                     entity.HasKey(e => e.ISBN);
+                    //thiet dinh not null
                     entity.Property(e => e.Title).IsRequired();
                 });
+
+                //modelBuilder.Entity<TacGia>(entity =>
+                //{
+                //    entity.HasKey(e => e.Name);
+                //    entity.Property(e => e.Que).IsRequired();
+                //});
             }
         }
     }

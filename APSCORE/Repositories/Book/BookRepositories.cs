@@ -25,7 +25,6 @@ namespace APSCORE.Repositories.Book
         {
 
             APSCORE.Entities.Book model = dbContext.Book.Where(x => x.Pages == page).FirstOrDefault();
-
             return model;
 
         }

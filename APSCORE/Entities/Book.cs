@@ -2,6 +2,8 @@
 
 namespace APSCORE.Entities
 {
+    //Tao ten bang
+    [Table("books")]
     public class Book
     {
 
