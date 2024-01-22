@@ -12,7 +12,7 @@ namespace APSCORE.Service
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
-                optionsBuilder.UseMySQL("server=localhost;database=library;user=root;password=123456");
+                optionsBuilder.UseMySQL("server=localhost;database=library;user=root;password=adminadmin");
             }
 
             protected override void OnModelCreating(ModelBuilder modelBuilder)

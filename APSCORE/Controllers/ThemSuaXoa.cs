@@ -18,9 +18,16 @@ namespace APSCORE.Controllers
         }
 
         [HttpGet("get-book")]
-        public List<Book> all()
+        public IActionResult all()
         {
-            return editBook.FindAll();
+            var result = editBook.FindAll();
+            if(result == null || result.Count == 0)
+            {
+                return NotFound();
+            } else
+            {
+                return Ok(result);
+            }
 
         }
 

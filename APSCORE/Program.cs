@@ -1,16 +1,22 @@
 using APSCORE.Entities;
 using static APSCORE.Service.MySqlService;
 using System.Security.Policy;
+using APSCORE.Service.EditBook.Interface;
+using APSCORE.Service.EditBook;
+using APSCORE.Repositories.Book;
+using APSCORE.Repositories.Book.Interfaces;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        //InsertData();
+        InsertData();
 
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.Services.AddScoped<LibraryContext>();
         // Add services to the container.
+        builder.Services.AddScoped<IEditBook, EditBook>();
+        builder.Services.AddScoped<IBookRepositories, BookRepositories>();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -66,7 +72,15 @@ internal class Program
             });
 
             // Saves changes
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }catch (Exception ex)
+            {
+
+            }
+
+
         }
     }
 }

@@ -14,6 +14,7 @@ namespace APSCORE.Service.EditBook
 
         }
 
+
         public List<Book> FindAll()
         {
             return bookRepositories.FindAllBooks();
